@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/14 18:39:34 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/05/14 18:58:33 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_game {
 	t_texture textures[4]; // 0:N 1:S 2:E 3:W
 	int		floor_color;
 	int		ceiling_color;
+	t_gc	gc;
 }	t_game;
 
 #endif
