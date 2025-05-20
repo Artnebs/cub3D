@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:43:31 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/14 18:43:36 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/05/20 18:21:25 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
+# include "gc.h"
+
+struct	s_game;
 
 typedef struct s_texture {
 	char	*path;
@@ -31,7 +34,8 @@ typedef struct s_map {
 }	t_map;
 
 int		parse_map_file(char *filename, struct s_game *game);
-int		parse_color(char *line, int *color);
+int		parse_texture_line(struct s_game *game, char *line);
+int		parse_color_line(t_gc *gc, char *line, int *color);
 int		validate_map(char **grid);
 
 #endif

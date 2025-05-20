@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:44:31 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/14 18:44:37 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/05/20 18:21:47 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_H
 # define RAYCAST_H
+
+struct	s_game;
 
 typedef struct s_ray {
 	double	dir_x;
