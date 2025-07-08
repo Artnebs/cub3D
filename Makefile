@@ -21,18 +21,23 @@ MLX			= $(MLX_DIR)/libmlx.a
 MLX_REPO	= https://github.com/42Paris/minilibx-linux.git
 
 # Compiler and Flags
-CC		= gcc
-CFLAGS		= -Wall -Wextra -Werror -g
+CC		= cc
+CFLAGS		= -Wall -Wextra -Werror
 INCLUDES	= -I$(INC_DIR) -I$(LIBFT_DIR)/includes -I$(MLX_DIR)
-LDFLAGS		= -L$(LIBFT_DIR) -lft -lreadline -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+LDFLAGS		= -L$(LIBFT_DIR) -lft -lreadline -L$(MLX_DIR) -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm
 
 # Sources
 SRCS		= $(SRC_DIR)/main.c \
               $(SRC_UTILS_DIR)/gc.c \
               $(SRC_PARSING_DIR)/map_file.c \
               $(SRC_PARSING_DIR)/textures.c \
-              $(SRC_PARSING_DIR)/colors.c
-
+              $(SRC_PARSING_DIR)/colors.c \
+              $(SRC_PARSING_DIR)/error.c \
+              $(SRC_PARSING_DIR)/map_parser.c \
+              $(SRC_PARSING_DIR)/raycasting.c \
+              $(SRC_PARSING_DIR)/events.c \
+              $(SRC_PARSING_DIR)/map_validation.c \
+              $(SRC_PARSING_DIR)/utils.c
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
@@ -106,25 +111,41 @@ debug: re
 
 clean:
 	@echo "Cleaning object files in $(OBJ_DIR)/..."
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 	@if [ -d "$(LIBFT_DIR)" ]; then \
+		echo "Cleaning Libft library..."; \
 		$(MAKE) -C $(LIBFT_DIR) clean; \
+	else \
+		echo "Libft directory not found, skipping..."; \
 	fi
 	@if [ -d "$(MLX_DIR)" ]; then \
-		$(MAKE) -C $(MLX_DIR) clean; \
+		if [ -f "$(MLX_DIR)/Makefile" ]; then \
+			echo "Cleaning MinilibX library..."; \
+			$(MAKE) -C $(MLX_DIR) clean || echo "MinilibX clean failed, continuing..."; \
+		else \
+			echo "MinilibX Makefile not found, skipping clean..."; \
+		fi; \
+	else \
+		echo "MinilibX directory not found, skipping..."; \
 	fi
+	@echo "Clean completed!"
 
 fclean: clean
 	@echo "Removing $(NAME) binary..."
-	rm -f $(NAME)
+	@rm -f $(NAME)
 	@if [ -d "test_files" ]; then \
 		echo "Removing test_files/ directory..."; \
 		rm -rf test_files; \
 	fi
-	@echo "Removing Libft directory (optional)..."
-	rm -rf $(LIBFT_DIR)
-	@echo "Removing MinilibX directory (optional)..."
-	rm -rf $(MLX_DIR)
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		echo "Removing Libft directory..."; \
+		rm -rf $(LIBFT_DIR); \
+	fi
+	@if [ -d "$(MLX_DIR)" ]; then \
+		echo "Removing MinilibX directory..."; \
+		rm -rf $(MLX_DIR); \
+	fi
+	@echo "Full clean completed!"
 
 re: fclean all
 
