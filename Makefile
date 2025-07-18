@@ -23,21 +23,21 @@ MLX_REPO	= https://github.com/42Paris/minilibx-linux.git
 # Compiler and Flags
 CC		= cc
 CFLAGS		= -Wall -Wextra -Werror
-INCLUDES	= -I$(INC_DIR) -I$(LIBFT_DIR)/includes -I$(MLX_DIR)
-LDFLAGS		= -L$(LIBFT_DIR) -lft -lreadline -L$(MLX_DIR) -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm
+INCLUDES	= -I$(INC_DIR) -I$(LIBFT_DIR)/includes -I$(MLX_DIR) -I/opt/X11/include
+LDFLAGS		= -L$(LIBFT_DIR) -lft -lreadline -L$(MLX_DIR) -lmlx -L/opt/X11/lib -lXext -lX11 -lm
 
 # Sources
 SRCS		= $(SRC_DIR)/main.c \
-              $(SRC_UTILS_DIR)/gc.c \
+              $(SRC_DIR)/gc.c \
               $(SRC_PARSING_DIR)/map_file.c \
-              $(SRC_PARSING_DIR)/textures.c \
+              $(SRC_DIR)/textures.c \
               $(SRC_PARSING_DIR)/colors.c \
-              $(SRC_PARSING_DIR)/error.c \
-              $(SRC_PARSING_DIR)/map_parser.c \
-              $(SRC_PARSING_DIR)/raycasting.c \
-              $(SRC_PARSING_DIR)/events.c \
-              $(SRC_PARSING_DIR)/map_validation.c \
-              $(SRC_PARSING_DIR)/utils.c
+              $(SRC_DIR)/map_parser.c \
+              $(SRC_DIR)/raycasting.c \
+              $(SRC_DIR)/events.c \
+              $(SRC_DIR)/map_validation.c \
+              $(SRC_DIR)/utils.c \
+			  $(SRC_DIR)/error.c \
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

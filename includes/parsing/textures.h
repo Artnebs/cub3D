@@ -1,0 +1,1 @@
+int	parse_texture_line(t_cub3d *cub3d, char *line); 

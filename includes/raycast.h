@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:44:31 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/20 18:21:47 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/18 16:00:39 by jeanb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ typedef struct s_ray {
 	double	perp_dist;
 }	t_ray;
 
-void	render_frame(struct s_game *game);
+int	render_frame(struct s_game *game);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:43:31 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/20 18:21:25 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/18 16:07:58 by jeanb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 struct	s_game;
 
 typedef struct s_texture {
-	char	*path;
 	void	*img;
 	char	*addr;
 	int		width;
 	int		height;
-	int		bpp;
-	int		line_len;
+	int		bits_per_pixel;
+	int		line_length;
 	int		endian;
+	char	*path;
 }	t_texture;
 
 typedef struct s_map {

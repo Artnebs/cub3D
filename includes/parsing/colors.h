@@ -1,0 +1,1 @@
+int	parse_color_line(t_cub3d *cub3d, char *line, int *color); 

@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# ✅ Cursor Rules – Projet Cub3D (42)
+
+Le sujet du projet est [fr.subject.pdf](mdc:fr.subject.pdf).
+Tu dois utiliser la librairie minilibx pour le rendu graphique.
+
+## 🧱 Structure du Code
+
+- [ ] Le projet respecte la norme 42 :
+  - [ ] Pas de fonction > 25 lignes
+  - [ ] Pas de ligne > 80 caractères
+  - [ ] Noms de variables et fonctions en snake_case
+  - [ ] Pas de variables globales non justifiées
+
+- [ ] Chaque fonction a une seule responsabilité
+- [ ] Le code est découpé logiquement par fichiers et modules (parsing, rendering, inputs, etc.)
+- [ ] Headers propres :
+  - [ ] Header guards (`#ifndef`, `#define`, `#endif`)
+  - [ ] Pas d’inclusion inutile
+  - [ ] Pas de dépendance circulaire
+
+---
+
+## 🗺️ Spécificités Cub3D
+
+- [ ] La map est bien fermée par des murs (`1`)
+- [ ] Un seul point de spawn (`N`, `S`, `E`, `W`)
+- [ ] Aucune valeur non reconnue dans la map (`2`, `X`, etc.)
+- [ ] Les textures sont bien chargées (NO, SO, EA, WE, etc.)
+- [ ] Les couleurs de sol et plafond sont parsées et affichées correctement
+
+---
+
+## 🛠 Compilation et Gestion des Erreurs
+
+- [ ] Compilation sans **aucun warning** avec `-Wall -Wextra -Werror`
+- [ ] Aucune fuite mémoire (valgrind clean)
+- [ ] Tous les appels à `malloc`, `open`, `read`, etc. sont protégés
+- [ ] Gestion propre des erreurs (avec message et `exit`, sans segfault)
+- [ ] Aucune double libération de mémoire (`free` deux fois)
+
+---
+
+## 🎮 Fonctionnalités et Rendu
+
+- [ ] La fenêtre s’ouvre correctement
+- [ ] Le joueur peut se déplacer (`W`, `A`, `S`, `D`) et tourner (flèches gauche/droite)
+- [ ] Les murs sont bien affichés avec effet de perspective
+- [ ] Les textures sont bien appliquées aux murs
+- [ ] Le sol et le plafond sont bien rendus
+- [ ] Aucun crash en usage normal ou en cas d’erreur d’entrée
+
+
+---
+
+> 🧠 Pensez à tester les cas limites : fichier manquant, mauvaise map, textures invalides, dimensions extrêmes, appui simultané sur plusieurs touches, etc.

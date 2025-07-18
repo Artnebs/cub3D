@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/20 18:20:53 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/18 16:25:32 by jeanb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
+# include "mlx.h"
 # include <stdio.h>
 # include <string.h>
 # include <errno.h>
+# include "libft.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
@@ -40,6 +41,7 @@ typedef struct s_texture
 	int		endian;
 	int		width;
 	int		height;
+	char	*path;
 } t_texture;
 
 typedef struct s_garbage
@@ -110,7 +112,7 @@ int			get_texture_color(t_texture *texture, int x, int y);
 
 // Raycasting
 void		init_raycasting(t_cub3d *cub3d);
-void		render_frame(t_cub3d *cub3d);
+int		render_frame(t_cub3d *cub3d);
 
 // Event handling
 int			handle_keypress(int keycode, t_cub3d *cub3d);

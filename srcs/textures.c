@@ -62,3 +62,30 @@ int get_texture_color(t_texture *texture, int x, int y)
     color = *(int *)pixel;
     return (color);
 } 
+
+int parse_texture_line(t_cub3d *cub3d, char *line)
+{
+    char    **tokens;
+    int     index;
+
+    tokens = ft_split(line, ' ');
+    if (!tokens || !tokens[0] || !tokens[1] || tokens[2])
+        return (0);
+    if (ft_strncmp(tokens[0], "NO", 2) == 0)
+        index = 0;
+    else if (ft_strncmp(tokens[0], "SO", 2) == 0)
+        index = 1;
+    else if (ft_strncmp(tokens[0], "EA", 2) == 0)
+        index = 2;
+    else if (ft_strncmp(tokens[0], "WE", 2) == 0)
+        index = 3;
+    else
+        return (0);
+    if (cub3d->map.textures[index].path != NULL)
+        return (0);
+    cub3d->map.textures[index].path = gc_malloc(cub3d, ft_strlen(tokens[1]) + 1);
+    if (!cub3d->map.textures[index].path)
+        return (0);
+    ft_strlcpy(cub3d->map.textures[index].path, tokens[1], ft_strlen(tokens[1]) + 1);
+    return (1);
+} 

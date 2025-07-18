@@ -6,22 +6,10 @@ void    init_raycasting(t_cub3d *cub3d)
     cub3d->player.plane_y = 0.0;
 }
 
-static void draw_vertical_line(t_cub3d *cub3d, int x, int draw_start, int draw_end, int color)
-{
-    int y;
-
-    y = draw_start;
-    while (y < draw_end)
-    {
-        if (y >= 0 && y < WINDOW_HEIGHT)
-            *(int *)(cub3d->data.addr + (y * cub3d->data.line_length + x * (cub3d->data.bits_per_pixel / 8))) = color;
-        y++;
-    }
-}
-
 static void draw_wall_texture(t_cub3d *cub3d, int x, int draw_start, int draw_end,
     double wall_x, int tex_x, int side, int tex_num)
 {
+    (void)wall_x;
     int y;
     int tex_y;
     int color;
@@ -51,6 +39,7 @@ static void draw_wall_texture(t_cub3d *cub3d, int x, int draw_start, int draw_en
 int render_frame(t_cub3d *cub3d)
 {
     int x;
+    int y;
     double camera_x;
     double ray_dir_x;
     double ray_dir_y;
@@ -71,6 +60,29 @@ int render_frame(t_cub3d *cub3d)
     double wall_x;
     int tex_x;
     int tex_num;
+
+    // Rendu sol/plafond
+    y = 0;
+    while (y < WINDOW_HEIGHT / 2)
+    {
+        x = 0;
+        while (x < WINDOW_WIDTH)
+        {
+            *(int *)(cub3d->data.addr + (y * cub3d->data.line_length + x * (cub3d->data.bits_per_pixel / 8))) = cub3d->map.ceiling_color;
+            x++;
+        }
+        y++;
+    }
+    while (y < WINDOW_HEIGHT)
+    {
+        x = 0;
+        while (x < WINDOW_WIDTH)
+        {
+            *(int *)(cub3d->data.addr + (y * cub3d->data.line_length + x * (cub3d->data.bits_per_pixel / 8))) = cub3d->map.floor_color;
+            x++;
+        }
+        y++;
+    }
 
     x = 0;
     while (x < WINDOW_WIDTH)

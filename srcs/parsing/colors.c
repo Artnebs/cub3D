@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:20:30 by jmader            #+#    #+#             */
-/*   Updated: 2025/05/20 15:33:57 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/18 16:09:53 by jeanb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
 
-static int	parse_rgb_values(t_gc *gc, char *str, int *color)
+static int	parse_rgb_values(char *str, int *color)
 {
 	char	**parts;
 	int		r;
 	int		g;
 	int		b;
 
-	parts = gc_split(gc, str, ',');
+	parts = ft_split(str, ',');
 	if (!parts || !parts[0] || !parts[1] || !parts[2] || parts[3])
 		return (-1);
 	r = ft_atoi(parts[0]);
@@ -32,16 +32,17 @@ static int	parse_rgb_values(t_gc *gc, char *str, int *color)
 	return (0);
 }
 
-int	parse_color_line(t_gc *gc, char *line, int *color)
+int	parse_color_line(t_cub3d *cub3d, char *line, int *color)
 {
 	char	**tokens;
 
-	tokens = gc_split(gc, line, ' ');
+	(void)cub3d;
+	tokens = ft_split(line, ' ');
 	if (!tokens || !tokens[0] || !tokens[1] || tokens[2])
 		return (printf("Error\nInvalid color line format\n"), -1);
 	if (tokens[0][0] != 'F' && tokens[0][0] != 'C')
 		return (printf("Error\nUnknown color identifier: %s\n", tokens[0]), -1);
-	if (parse_rgb_values(gc, tokens[1], color) == -1)
+	if (parse_rgb_values(tokens[1], color) == -1)
 		return (printf("Error\nInvalid RGB values: %s\n", tokens[1]), -1);
 	return (0);
 }

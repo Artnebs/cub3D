@@ -2,6 +2,7 @@
 
 void    *gc_malloc(t_cub3d *cub3d, size_t size)
 {
+    printf("[gc_malloc] cub3d=%p, cub3d->garbage=%p, size=%zu\n", (void*)cub3d, (void*)(cub3d ? cub3d->garbage : NULL), size);
     void        *ptr;
     t_garbage   *new;
 
