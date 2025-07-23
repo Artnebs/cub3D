@@ -6,21 +6,8 @@ void    init_raycasting(t_cub3d *cub3d)
     cub3d->player.plane_y = 0.0;
 }
 
-static void draw_vertical_line(t_cub3d *cub3d, int x, int draw_start, int draw_end, int color)
-{
-    int y;
-
-    y = draw_start;
-    while (y < draw_end)
-    {
-        if (y >= 0 && y < WINDOW_HEIGHT)
-            *(int *)(cub3d->data.addr + (y * cub3d->data.line_length + x * (cub3d->data.bits_per_pixel / 8))) = color;
-        y++;
-    }
-}
-
 static void draw_wall_texture(t_cub3d *cub3d, int x, int draw_start, int draw_end,
-    double wall_x, int tex_x, int side, int tex_num)
+    double wall_x __attribute__((unused)), int tex_x, int side, int tex_num)
 {
     int y;
     int tex_y;
@@ -48,8 +35,9 @@ static void draw_wall_texture(t_cub3d *cub3d, int x, int draw_start, int draw_en
     }
 }
 
-int render_frame(t_cub3d *cub3d)
+int render_frame(void *param)
 {
+    t_cub3d *cub3d = (t_cub3d *)param;
     int x;
     double camera_x;
     double ray_dir_x;
@@ -161,4 +149,4 @@ int render_frame(t_cub3d *cub3d)
     }
     mlx_put_image_to_window(cub3d->data.mlx, cub3d->data.win, cub3d->data.img, 0, 0);
     return (0);
-} 
+}

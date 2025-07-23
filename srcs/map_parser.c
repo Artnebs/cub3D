@@ -1,4 +1,17 @@
 #include "cub3d.h"
+#include "get_next_line.h"
+
+static char *strip_newline(char *str)
+{
+    int len;
+
+    if (!str)
+        return (str);
+    len = ft_strlen(str);
+    if (len > 0 && str[len - 1] == '\n')
+        str[len - 1] = '\0';
+    return (str);
+}
 
 static int  parse_texture(t_cub3d *cub3d, char *line, char **texture)
 {
@@ -25,13 +38,14 @@ static int  parse_texture(t_cub3d *cub3d, char *line, char **texture)
         free_split(split);
         return (0);
     }
-    ft_strlcpy(*texture, split[1], ft_strlen(split[1]) + 1);
+    memcpy(*texture, split[1], ft_strlen(split[1]));
+    (*texture)[ft_strlen(split[1])] = '\0';
     
     free_split(split);
     return (1);
 }
 
-static int  parse_color(t_cub3d *cub3d, char *line, int *color)
+static int  parse_color(t_cub3d *cub3d __attribute__((unused)), char *line, int *color)
 {
     char    **split;
     char    **rgb;
@@ -110,7 +124,8 @@ static int  parse_map_line(t_cub3d *cub3d, char *line)
         gc_free(cub3d, new_map);
         return (0);
     }
-    ft_strlcpy(new_map[i], line, ft_strlen(line) + 1);
+    memcpy(new_map[i], line, ft_strlen(line));
+    new_map[i][ft_strlen(line)] = '\0';
     
     new_map[i + 1] = NULL;
     
@@ -120,8 +135,8 @@ static int  parse_map_line(t_cub3d *cub3d, char *line)
     cub3d->map.map = new_map;
     cub3d->map.height++;
     
-    if (ft_strlen(line) > cub3d->map.width)
-        cub3d->map.width = ft_strlen(line);
+    if ((int)ft_strlen(line) > cub3d->map.width)
+        cub3d->map.width = (int)ft_strlen(line);
     
     return (1);
 }
@@ -152,7 +167,6 @@ int parse_map(t_cub3d *cub3d, const char *filename)
 {
     int     fd;
     char    *line;
-    int     ret;
 
     fd = open(filename, O_RDONLY);
     if (fd < 0)
@@ -166,23 +180,9 @@ int parse_map(t_cub3d *cub3d, const char *filename)
     cub3d->map.east_texture = NULL;
     cub3d->map.west_texture = NULL;
     
-    while (1)
+    while ((line = get_next_line(fd)) != NULL)
     {
-        ret = get_next_line(fd, &line);
-        if (ret <= 0)
-            break;
-        
-        if (!parse_line(cub3d, line))
-        {
-            free(line);
-            close(fd);
-            return (0);
-        }
-        free(line);
-    }
-    
-    if (ret == 0 && line)
-    {
+        strip_newline(line);
         if (!parse_line(cub3d, line))
         {
             free(line);
@@ -194,4 +194,4 @@ int parse_map(t_cub3d *cub3d, const char *filename)
     
     close(fd);
     return (1);
-} 
+}

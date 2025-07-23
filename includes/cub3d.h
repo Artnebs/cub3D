@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/20 18:20:53 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/23 16:15:24 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int			get_texture_color(t_texture *texture, int x, int y);
 
 // Raycasting
 void		init_raycasting(t_cub3d *cub3d);
-void		render_frame(t_cub3d *cub3d);
+int		render_frame(void *param);
 
 // Event handling
 int			handle_keypress(int keycode, t_cub3d *cub3d);

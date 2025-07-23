@@ -25,7 +25,8 @@ char    *ft_strdup(const char *s)
     dup = malloc(len + 1);
     if (!dup)
         return (NULL);
-    ft_strlcpy(dup, s, len + 1);
+    memcpy(dup, s, len);
+    dup[len] = '\0';
     return (dup);
 }
 
@@ -60,7 +61,8 @@ char    **ft_split(char const *s, char c)
                 free_split(result);
                 return (NULL);
             }
-            ft_strlcpy(result[j], s + k, len + 1);
+            memcpy(result[j], s + k, len);
+            result[j][len] = '\0';
             j++;
         }
     }
@@ -101,4 +103,4 @@ size_t  ft_strlen(const char *s)
     while (s[i])
         i++;
     return (i);
-} 
+}

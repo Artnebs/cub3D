@@ -28,16 +28,18 @@ LDFLAGS		= -L$(LIBFT_DIR) -lft -lreadline -L$(MLX_DIR) -lmlx -L/usr/lib -Imlx -l
 
 # Sources
 SRCS		= $(SRC_DIR)/main.c \
-              $(SRC_UTILS_DIR)/gc.c \
-              $(SRC_PARSING_DIR)/map_file.c \
-              $(SRC_PARSING_DIR)/textures.c \
-              $(SRC_PARSING_DIR)/colors.c \
-              $(SRC_PARSING_DIR)/error.c \
-              $(SRC_PARSING_DIR)/map_parser.c \
-              $(SRC_PARSING_DIR)/raycasting.c \
-              $(SRC_PARSING_DIR)/events.c \
-              $(SRC_PARSING_DIR)/map_validation.c \
-              $(SRC_PARSING_DIR)/utils.c
+			  # $(SRC_UTILS_DIR)/gc.c \
+			  $(SRC_PARSING_DIR)/map_file.c \
+			  $(SRC_PARSING_DIR)/textures.c \
+			  $(SRC_PARSING_DIR)/colors.c \
+			  $(SRC_DIR)/error.c \
+			  $(SRC_DIR)/map_parser.c \
+			  $(SRC_DIR)/raycasting.c \
+			  $(SRC_DIR)/events.c \
+			  $(SRC_DIR)/map_validation.c \
+			  $(SRC_DIR)/utils.c \
+			  $(SRC_DIR)/textures.c \
+			  $(SRC_DIR)/gc.c
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

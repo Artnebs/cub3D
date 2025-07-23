@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 13:24:42 by jmader            #+#    #+#             */
-/*   Updated: 2025/05/20 18:52:04 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/23 16:23:04 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft.h"
+#include "parsing.h"
 #include <fcntl.h>
 
 static int	is_texture_line(char *line)
@@ -28,7 +29,7 @@ static int	is_color_line(char *line)
 		|| ft_strncmp(line, "C ", 2) == 0);
 }
 
-int	parse_map_file(char *filename, t_game *game)
+int	parse_map_file(char *filename, t_cub3d *game)
 {
 	int		fd;
 	char	*line;
@@ -45,7 +46,7 @@ int	parse_map_file(char *filename, t_game *game)
 		}
 		if (is_texture_line(line))
 		{
-			if (parse_texture_line(game, line) == -1)
+			   if (parse_texture_line(game, line) == -1)
 			{
 				free(line);
 				return (-1);
@@ -53,12 +54,12 @@ int	parse_map_file(char *filename, t_game *game)
 		}
 		else if (is_color_line(line))
 		{
-			if (line[0] == 'F' && parse_color_line(&game->gc, line, &game->floor_color) == -1)
+			   if (line[0] == 'F' && parse_color_line(game, line, &game->map.floor_color) == -1)
 			{
 				free(line);
 				return (-1);
 			}
-			if (line[0] == 'C' && parse_color_line(&game->gc, line, &game->ceiling_color) == -1)
+			   if (line[0] == 'C' && parse_color_line(game, line, &game->map.ceiling_color) == -1)
 			{
 				free(line);
 				return (-1);

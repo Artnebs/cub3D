@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:43:49 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/20 18:21:35 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/23 16:19:51 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-struct	s_game;
+typedef struct s_cub3d t_cub3d;
 
 typedef struct s_player {
 	double	x;
@@ -24,6 +24,6 @@ typedef struct s_player {
 	double	plane_y;
 }	t_player;
 
-void	move_player(struct s_game *game, int keycode);
+void	move_player(t_cub3d *game, int keycode);
 
 #endif

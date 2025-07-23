@@ -3,39 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:43:31 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/20 18:21:25 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/23 16:22:11 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
-# include "gc.h"
+# include "cub3d.h"
 
-struct	s_game;
-
-typedef struct s_texture {
-	char	*path;
-	void	*img;
-	char	*addr;
-	int		width;
-	int		height;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}	t_texture;
-
-typedef struct s_map {
-	char	**grid;
-	int		width;
-	int		height;
-}	t_map;
-
-int		parse_map_file(char *filename, struct s_game *game);
-int		parse_texture_line(struct s_game *game, char *line);
-int		parse_color_line(t_gc *gc, char *line, int *color);
-int		validate_map(char **grid);
+int		parse_map_file(char *filename, t_cub3d *game);
+int		parse_texture_line(t_cub3d *game, char *line);
+int		parse_color_line(t_cub3d *cub3d, char *line, int *color);
 
 #endif
