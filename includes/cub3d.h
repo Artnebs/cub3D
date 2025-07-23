@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/23 16:15:24 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/23 17:07:20 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
-# include <stdio.h>
-# include <string.h>
 # include <errno.h>
+# include "../Libft_GNL_Printf/includes/libft.h"
+# include "../Libft_GNL_Printf/includes/get_next_line.h"
+# include "../Libft_GNL_Printf/includes/ft_printf.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
@@ -117,10 +118,7 @@ int			handle_keypress(int keycode, t_cub3d *cub3d);
 int			handle_window_close(t_cub3d *cub3d);
 
 // Utility functions
-void		free_split(char **split);
-char		*ft_strdup(const char *s);
-char		**ft_split(char const *s, char c);
-int			ft_atoi(const char *str);
-size_t		ft_strlen(const char *s);
+void		strip_newline(char *str);
+int			is_valid_cub_file(const char *filename);
 
 #endif

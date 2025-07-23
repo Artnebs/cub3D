@@ -1,106 +1,38 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/23 17:08:00 by anebbou           #+#    #+#             */
+/*   Updated: 2025/07/23 17:08:05 by anebbou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    free_split(char **split)
+#include "../includes/cub3d.h"
+
+void	strip_newline(char *str)
 {
-    int i;
+	int	len;
 
-    if (!split)
-        return;
-    
-    i = 0;
-    while (split[i])
-    {
-        free(split[i]);
-        i++;
-    }
-    free(split);
+	if (!str)
+		return ;
+	len = ft_strlen(str);
+	if (len > 0 && str[len - 1] == '\n')
+		str[len - 1] = '\0';
 }
 
-char    *ft_strdup(const char *s)
+int	is_valid_cub_file(const char *filename)
 {
-    char    *dup;
-    size_t  len;
+	int	len;
 
-    len = ft_strlen(s);
-    dup = malloc(len + 1);
-    if (!dup)
-        return (NULL);
-    memcpy(dup, s, len);
-    dup[len] = '\0';
-    return (dup);
-}
-
-char    **ft_split(char const *s, char c)
-{
-    char    **result;
-    int     i;
-    int     j;
-    int     k;
-    int     len;
-
-    if (!s)
-        return (NULL);
-    result = malloc(sizeof(char *) * (ft_strlen(s) + 1));
-    if (!result)
-        return (NULL);
-    i = 0;
-    j = 0;
-    while (s[i])
-    {
-        while (s[i] && s[i] == c)
-            i++;
-        if (s[i])
-        {
-            k = i;
-            while (s[i] && s[i] != c)
-                i++;
-            len = i - k;
-            result[j] = malloc(len + 1);
-            if (!result[j])
-            {
-                free_split(result);
-                return (NULL);
-            }
-            memcpy(result[j], s + k, len);
-            result[j][len] = '\0';
-            j++;
-        }
-    }
-    result[j] = NULL;
-    return (result);
-}
-
-int ft_atoi(const char *str)
-{
-    int i;
-    int sign;
-    int result;
-
-    i = 0;
-    sign = 1;
-    result = 0;
-    while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-        i++;
-    if (str[i] == '-' || str[i] == '+')
-    {
-        if (str[i] == '-')
-            sign = -1;
-        i++;
-    }
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        result = result * 10 + (str[i] - '0');
-        i++;
-    }
-    return (result * sign);
-}
-
-size_t  ft_strlen(const char *s)
-{
-    size_t  i;
-
-    i = 0;
-    while (s[i])
-        i++;
-    return (i);
+	if (!filename)
+		return (0);
+	len = ft_strlen(filename);
+	if (len < 4)
+		return (0);
+	if (ft_strncmp(filename + len - 4, ".cub", 4) == 0)
+		return (1);
+	return (0);
 }

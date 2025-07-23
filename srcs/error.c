@@ -1,4 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/23 17:08:45 by anebbou           #+#    #+#             */
+/*   Updated: 2025/07/23 17:08:51 by anebbou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../includes/cub3d.h"
 
 void	error_exit(t_cub3d *cub3d, const char *message)
 {
@@ -16,9 +28,11 @@ void	error_exit(t_cub3d *cub3d, const char *message)
 		free_textures(cub3d);
 		gc_cleanup(cub3d);
 	}
-	write(2, "Error\n", 6);
-	write(2, message, ft_strlen(message));
-	write(2, "\n", 1);
+	write(STDERR_FILENO, "Error\n", 6);
+	if (message)
+	{
+		write(STDERR_FILENO, message, ft_strlen(message));
+		write(STDERR_FILENO, "\n", 1);
+	}
 	exit(1);
 }
-
