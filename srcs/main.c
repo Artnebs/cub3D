@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:07:30 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/23 17:07:42 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/28 18:41:26 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->map.south_texture = NULL;
 	cub3d->map.east_texture = NULL;
 	cub3d->map.west_texture = NULL;
-	cub3d->map.floor_color = 0;
-	cub3d->map.ceiling_color = 0;
+	cub3d->map.floor_color = -1;
+	cub3d->map.ceiling_color = -1;
 	cub3d->garbage = NULL;
 }
 
 static int	validate_arguments(int argc, char **argv)
 {
+	int	fd;
+
 	if (argc != 2)
 	{
 		write(STDERR_FILENO, "Error\nUsage: ./cub3D <map.cub>\n", 29);
@@ -48,6 +50,13 @@ static int	validate_arguments(int argc, char **argv)
 		write(STDERR_FILENO, "Error\nInvalid file extension. Use .cub\n", 38);
 		return (0);
 	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		write(STDERR_FILENO, "Error\nFailed to open file\n", 26);
+		return (0);
+	}
+	close(fd);
 	return (1);
 }
 
@@ -78,10 +87,8 @@ int	main(int argc, char **argv)
 	if (!validate_arguments(argc, argv))
 		return (1);
 	init_cub3d(&cub3d);
-	if (!parse_map(&cub3d, argv[1]))
-		error_exit(&cub3d, "Failed to parse map");
-	if (!validate_map(&cub3d))
-		error_exit(&cub3d, "Invalid map");
+	parse_map(&cub3d, argv[1]);
+	validate_map(&cub3d);
 	setup_mlx(&cub3d);
 	if (!load_textures(&cub3d))
 		error_exit(&cub3d, "Failed to load textures");

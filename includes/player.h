@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:43:49 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/23 16:19:51 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/28 18:10:56 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-typedef struct s_cub3d t_cub3d;
+typedef struct s_cub3d	t_cub3d;
 
 typedef struct s_player {
 	double	x;

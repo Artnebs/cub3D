@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:10:50 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/23 17:11:03 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/28 18:11:49 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	is_valid_position(t_cub3d *cub3d, double x, double y)
 	if (map_x < 0 || map_x >= cub3d->map.width
 		|| map_y < 0 || map_y >= cub3d->map.height)
 		return (0);
-	if (!cub3d->map.map[map_y] || map_x >= (int)ft_strlen(cub3d->map.map[map_y]))
+	if (!cub3d->map.map[map_y] || \
+		map_x >= (int)ft_strlen(cub3d->map.map[map_y]))
 		return (0);
 	return (cub3d->map.map[map_y][map_x] != '1');
 }
@@ -68,9 +69,9 @@ static void	handle_rotation(t_cub3d *cub3d, int keycode)
 	double	rotation_angle;
 
 	if (keycode == 65361)
-		rotation_angle = ROTATION_SPEED;
-	else if (keycode == 65363)
 		rotation_angle = -ROTATION_SPEED;
+	else if (keycode == 65363)
+		rotation_angle = ROTATION_SPEED;
 	else
 		return ;
 	old_dir_x = cub3d->player.dir_x;
@@ -89,7 +90,8 @@ int	handle_keypress(int keycode, t_cub3d *cub3d)
 {
 	if (keycode == 65307)
 		handle_window_close(cub3d);
-	else if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100)
+	else if (keycode == 119 || keycode == 115 \
+		|| keycode == 97 || keycode == 100)
 		handle_movement(cub3d, keycode);
 	else if (keycode == 65361 || keycode == 65363)
 		handle_rotation(cub3d, keycode);

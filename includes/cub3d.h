@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/23 17:07:20 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/28 18:10:33 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ typedef struct s_texture
 	int		endian;
 	int		width;
 	int		height;
-} t_texture;
+}	t_texture;
 
 typedef struct s_garbage
 {
-	void			*ptr;
+	void				*ptr;
 	struct s_garbage	*next;
-} t_garbage;
+}	t_garbage;
 
 typedef struct s_data
 {
@@ -58,7 +58,7 @@ typedef struct s_data
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-} t_data;
+}	t_data;
 
 typedef struct s_player
 {
@@ -68,7 +68,7 @@ typedef struct s_player
 	double		dir_y;
 	double		plane_x;
 	double		plane_y;
-} t_player;
+}	t_player;
 
 typedef struct s_map
 {
@@ -81,8 +81,8 @@ typedef struct s_map
 	char		*west_texture;
 	int			floor_color;
 	int			ceiling_color;
-	t_texture	textures[4]; // 0:N 1:S 2:E 3:W
-} t_map;
+	t_texture	textures[4];
+}	t_map;
 
 typedef struct s_cub3d
 {
@@ -90,7 +90,7 @@ typedef struct s_cub3d
 	t_player	player;
 	t_map		map;
 	t_garbage	*garbage;
-} t_cub3d;
+}	t_cub3d;
 
 // Garbage collector functions
 void		*gc_malloc(t_cub3d *cub3d, size_t size);
@@ -111,7 +111,7 @@ int			get_texture_color(t_texture *texture, int x, int y);
 
 // Raycasting
 void		init_raycasting(t_cub3d *cub3d);
-int		render_frame(void *param);
+int			render_frame(void *param);
 
 // Event handling
 int			handle_keypress(int keycode, t_cub3d *cub3d);

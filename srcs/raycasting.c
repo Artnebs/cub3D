@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:11:55 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/23 17:16:11 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/28 18:15:57 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	draw_floor_ceiling(t_cub3d *cub3d, int x, int draw_start,
 	{
 		if (y >= 0 && y < WINDOW_HEIGHT && x >= 0 && x < WINDOW_WIDTH)
 			*(int *)(cub3d->data.addr + (y * cub3d->data.line_length
-				+ x * (cub3d->data.bits_per_pixel / 8)))
+						+ x * (cub3d->data.bits_per_pixel / 8)))
 				= cub3d->map.ceiling_color;
 		y++;
 	}
@@ -36,7 +36,7 @@ static void	draw_floor_ceiling(t_cub3d *cub3d, int x, int draw_start,
 	{
 		if (y >= 0 && y < WINDOW_HEIGHT && x >= 0 && x < WINDOW_WIDTH)
 			*(int *)(cub3d->data.addr + (y * cub3d->data.line_length
-				+ x * (cub3d->data.bits_per_pixel / 8)))
+						+ x * (cub3d->data.bits_per_pixel / 8)))
 				= cub3d->map.floor_color;
 		y++;
 	}
@@ -73,7 +73,7 @@ static void	draw_wall_texture(t_cub3d *cub3d, int x, int draw_start,
 			if (wall->side == 1)
 				color = (color >> 1) & 8355711;
 			*(int *)(cub3d->data.addr + (y * cub3d->data.line_length
-					+ x * (cub3d->data.bits_per_pixel / 8))) = color;
+						+ x * (cub3d->data.bits_per_pixel / 8))) = color;
 		}
 		y++;
 	}
