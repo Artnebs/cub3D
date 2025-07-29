@@ -31,11 +31,21 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/gc.c \
 			  $(SRC_DIR)/error.c \
 			  $(SRC_DIR)/map_parser.c \
+			  $(SRC_DIR)/parsing_utils.c \
 			  $(SRC_DIR)/map_validation.c \
+			  $(SRC_DIR)/validation_utils.c \
 			  $(SRC_DIR)/utils.c \
 			  $(SRC_DIR)/textures.c \
 			  $(SRC_DIR)/raycasting.c \
-			  $(SRC_DIR)/events.c
+			  $(SRC_DIR)/raycasting_utils.c \
+			  $(SRC_DIR)/raycasting_calc.c \
+			  $(SRC_DIR)/events.c \
+			  $(SRC_DIR)/events_utils.c \
+			  $(SRC_DIR)/player_direction.c \
+			  $(SRC_DIR)/texture_parsing.c \
+			  $(SRC_DIR)/color_parsing.c \
+			  $(SRC_DIR)/movement.c \
+			  $(SRC_DIR)/rotation.c
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

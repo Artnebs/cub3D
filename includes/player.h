@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:43:49 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/28 18:10:56 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 12:26:06 by jeanb            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 typedef struct s_cub3d	t_cub3d;
 
-typedef struct s_player {
+typedef struct s_player
+{
 	double	x;
 	double	y;
 	double	dir_x;
