@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:15:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 12:39:34 by jeanb            ###   ########.fr       */
+/*   Updated: 2025/07/29 14:54:15 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,4 @@ int	parse_texture_line(t_cub3d *cub3d, char *line, int i)
 	else if (i == 3 && ft_strncmp(line, "EA ", 3) == 0)
 		return (parse_texture(cub3d, line, &cub3d->map.east_texture, "EA"));
 	return (0);
-} 
+}

@@ -6,15 +6,11 @@
 /*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:11:20 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 13:10:56 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:53:25 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-
-
-
 
 static int	check_map_chars(t_cub3d *cub3d)
 {
@@ -107,7 +103,7 @@ int	validate_map(t_cub3d *cub3d)
 		error_exit(cub3d, "No map found in file");
 	if (cub3d->map.height == 0)
 		error_exit(cub3d, "Empty map");
-	check_map_chars(cub3d);  // This now exits on error
-	check_walls(cub3d);      // This now exits on error
+	check_map_chars(cub3d);
+	check_walls(cub3d);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:20:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 13:10:56 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 14:54:32 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,4 @@ int	is_open_space_adjacent(t_cub3d *cub3d, int i, int j)
 	if (adjacent_chars[3] == ' ' || adjacent_chars[3] == '\t')
 		return (1);
 	return (0);
-} 
+}

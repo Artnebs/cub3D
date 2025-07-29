@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_direction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:20:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 12:39:34 by jeanb            ###   ########.fr       */
+/*   Updated: 2025/07/29 13:25:55 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,4 @@ void	set_player_direction(t_cub3d *cub3d, char direction)
 		set_player_east(cub3d);
 	else if (direction == 'W')
 		set_player_west(cub3d);
-} 
+}

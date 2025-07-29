@@ -6,7 +6,7 @@
 /*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:09:10 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 13:13:51 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 13:22:41 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static int	parse_line(t_cub3d *cub3d, char *line)
 		i++;
 	if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i,
-			&cub3d->map.north_texture, "NO"));
+				&cub3d->map.north_texture, "NO"));
 	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
-		return (parse_texture(cub3d, line + i, &cub3d->map.south_texture, "SO"));
-	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
+		return (parse_texture(cub3d, line + i,
+				&cub3d->map.south_texture, "SO"));
+	else if (line[i] == 'W' && line[i + 1] == 'E' && \
+		line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i, &cub3d->map.west_texture, "WE"));
 	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i, &cub3d->map.east_texture, "EA"));
@@ -36,7 +38,8 @@ static int	parse_line(t_cub3d *cub3d, char *line)
 		return (1);
 	else if (is_map_line(line))
 		return (parse_map_line(cub3d, line));
-	error_exit(cub3d, "Invalid line in map file: unknown identifier or character");
+	error_exit(cub3d,
+		"Invalid line in map file: unknown identifier or character");
 	return (0);
 }
 
