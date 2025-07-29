@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/23 17:11:55 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 13:34:48 by jmader           ###   ########.fr       */
+/*   Created: 2025/07/29 20:12:39 by anebbou           #+#    #+#             */
+/*   Updated: 2025/07/29 20:39:40 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static void	put_pixel_to_image(t_cub3d *cub3d, t_wall_draw_params *params,
 		if (params->wall->side == 1)
 			color = (color >> 1) & 8355711;
 		*(int *)(cub3d->data.addr + (y * cub3d->data.line_length
-			+ params->x * (cub3d->data.bits_per_pixel / 8))) = color;
+					x . + params->x
+					* (cub3d->data.bits_per_pixel / 8))) = color;
 	}
 }
 

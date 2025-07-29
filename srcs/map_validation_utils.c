@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:20:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 18:45:24 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/29 20:49:20 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	check_adjacent_spaces(t_cub3d *cub3d, int i, int j, int len)
 {
 	if (i > 0 && (j >= (int)ft_strlen(cub3d->map.map[i - 1])
 			|| cub3d->map.map[i - 1][j] == ' '
-			|| cub3d->map.map[i - 1][j] == '\t'))
+		|| cub3d->map.map[i - 1][j] == '\t'))
 		error_exit(cub3d, "Map wall validation failed");
 	if (i < cub3d->map.height - 1 && (j >= (int)ft_strlen(cub3d->map.map[i + 1])
 			|| cub3d->map.map[i + 1][j] == ' '
-			|| cub3d->map.map[i + 1][j] == '\t'))
+		|| cub3d->map.map[i + 1][j] == '\t'))
 		error_exit(cub3d, "Map wall validation failed");
 	if (j > 0 && (cub3d->map.map[i][j - 1] == ' '
 		|| cub3d->map.map[i][j - 1] == '\t'))
