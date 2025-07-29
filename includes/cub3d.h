@@ -136,12 +136,14 @@ typedef struct s_wall_x_params
 	int		side;
 }	t_wall_x_params;
 
-typedef struct s_wall_render_params {
+typedef struct s_wall_render_params
+{
 	double	perp_wall_dist;
 	int		side;
 }	t_wall_render_params;
 
-typedef struct s_raycast_data {
+typedef struct s_raycast_data
+{
 	t_ray_params			params;
 	t_draw_params			draw_params;
 	t_wall_data				wall;
@@ -186,6 +188,9 @@ int			is_valid_char(char c);
 void		set_player_direction(t_cub3d *cub3d, char direction);
 int			get_char_at_pos(t_cub3d *cub3d, int row, int col);
 int			is_open_space_adjacent(t_cub3d *cub3d, int i, int j);
+int			check_borders(t_cub3d *cub3d, int i, int j, int len);
+int			check_adjacent_spaces(t_cub3d *cub3d, int i, int j, int len);
+void		check_position(t_cub3d *cub3d, int i, int j, int len);
 
 // Texture handling
 int			load_textures(t_cub3d *cub3d);

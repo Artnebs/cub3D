@@ -26,7 +26,8 @@ static int	check_map_chars(t_cub3d *cub3d)
 		while (cub3d->map.map[i][j])
 		{
 			if (cub3d->map.map[i][j] == 'N' || cub3d->map.map[i][j] == 'S'
-				|| cub3d->map.map[i][j] == 'E' || cub3d->map.map[i][j] == 'W')
+				|| cub3d->map.map[i][j] == 'E'
+				|| cub3d->map.map[i][j] == 'W')
 			{
 				if (player_found)
 					error_exit(cub3d, "Multiple player starting positions found");
@@ -59,25 +60,7 @@ static int	check_walls(t_cub3d *cub3d)
 		len = ft_strlen(cub3d->map.map[i]);
 		while (j < len)
 		{
-			if (cub3d->map.map[i][j] == '0' || cub3d->map.map[i][j] == 'N'
-				|| cub3d->map.map[i][j] == 'S' || cub3d->map.map[i][j] == 'E'
-				|| cub3d->map.map[i][j] == 'W')
-			{
-				if (i == 0 || i == cub3d->map.height - 1 || \
-					j == 0 || j == len - 1)
-					error_exit(cub3d, "Map is not surrounded by walls: open space at border");
-				if (i > 0 && (j >= (int)ft_strlen(cub3d->map.map[i - 1])
-						|| cub3d->map.map[i - 1][j] == ' ' || cub3d->map.map[i - 1][j] == '\t'))
-					error_exit(cub3d, "Map is not surrounded by walls: open space adjacent to void");
-				if (i < cub3d->map.height - 1 && \
-					(j >= (int)ft_strlen(cub3d->map.map[i + 1])
-						|| cub3d->map.map[i + 1][j] == ' ' || cub3d->map.map[i + 1][j] == '\t'))
-					error_exit(cub3d, "Map is not surrounded by walls: open space adjacent to void");
-				if (j > 0 && (cub3d->map.map[i][j - 1] == ' ' || cub3d->map.map[i][j - 1] == '\t'))
-					error_exit(cub3d, "Map is not surrounded by walls: open space adjacent to void");
-				if (j < len - 1 && (cub3d->map.map[i][j + 1] == ' ' || cub3d->map.map[i][j + 1] == '\t'))
-					error_exit(cub3d, "Map is not surrounded by walls: open space adjacent to void");
-			}
+			check_position(cub3d, i, j, len);
 			j++;
 		}
 		i++;

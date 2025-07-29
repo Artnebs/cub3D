@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:09:10 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 13:22:41 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 16:47:02 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	parse_map(t_cub3d *cub3d, const char *filename)
 	cub3d->map.west_texture = NULL;
 	cub3d->map.floor_color = -1;
 	cub3d->map.ceiling_color = -1;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		strip_newline(line);
 		if (!parse_line(cub3d, line))
@@ -70,6 +71,7 @@ int	parse_map(t_cub3d *cub3d, const char *filename)
 			error_exit(cub3d, "Failed to parse line in map file");
 		}
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (1);

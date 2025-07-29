@@ -18,6 +18,46 @@ int	is_valid_char(char c)
 		|| c == 'E' || c == 'W' || c == ' ' || c == '\t');
 }
 
+int	check_borders(t_cub3d *cub3d, int i, int j, int len)
+{
+	if (i == 0 || i == cub3d->map.height - 1 || j == 0 || j == len - 1)
+	{
+		error_exit(cub3d, "Map border validation failed");
+		return (0);
+	}
+	return (1);
+}
+
+int	check_adjacent_spaces(t_cub3d *cub3d, int i, int j, int len)
+{
+	if (i > 0 && (j >= (int)ft_strlen(cub3d->map.map[i - 1])
+		|| cub3d->map.map[i - 1][j] == ' '
+		|| cub3d->map.map[i - 1][j] == '\t'))
+		error_exit(cub3d, "Map wall validation failed");
+	if (i < cub3d->map.height - 1 && (j >= (int)ft_strlen(cub3d->map.map[i + 1])
+		|| cub3d->map.map[i + 1][j] == ' '
+		|| cub3d->map.map[i + 1][j] == '\t'))
+		error_exit(cub3d, "Map wall validation failed");
+	if (j > 0 && (cub3d->map.map[i][j - 1] == ' '
+		|| cub3d->map.map[i][j - 1] == '\t'))
+		error_exit(cub3d, "Map wall validation failed");
+	if (j < len - 1 && (cub3d->map.map[i][j + 1] == ' '
+		|| cub3d->map.map[i][j + 1] == '\t'))
+		error_exit(cub3d, "Map wall validation failed");
+	return (1);
+}
+
+void	check_position(t_cub3d *cub3d, int i, int j, int len)
+{
+	if (cub3d->map.map[i][j] == '0' || cub3d->map.map[i][j] == 'N'
+		|| cub3d->map.map[i][j] == 'S' || cub3d->map.map[i][j] == 'E'
+		|| cub3d->map.map[i][j] == 'W')
+	{
+		check_borders(cub3d, i, j, len);
+		check_adjacent_spaces(cub3d, i, j, len);
+	}
+}
+
 int	get_char_at_pos(t_cub3d *cub3d, int row, int col)
 {
 	if (row < 0 || row >= cub3d->map.height)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_parsing.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:15:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 14:54:15 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 16:47:02 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	validate_texture_args(char **split, t_cub3d *cub3d)
 	return (1);
 }
 
-static int	check_texture_duplicate(char **texture, char **split, t_cub3d *cub3d)
+static int	check_texture_duplicate(char **texture, char **split,
+	t_cub3d *cub3d)
 {
 	if (*texture != NULL)
 	{
