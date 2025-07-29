@@ -67,7 +67,8 @@ static int	validate_rgb_values(int r_g_b[3], char **rgb, t_cub3d *cub3d)
 	return (1);
 }
 
-static int	parse_color_split_and_rgb(t_cub3d *cub3d, char *line, char ***split, char ***rgb)
+static int	parse_color_split_and_rgb(t_cub3d *cub3d, char *line,
+				char ***split, char ***rgb)
 {
 	*split = ft_split(line, ' ');
 	if (!*split)
@@ -112,4 +113,4 @@ int	parse_color_line(t_cub3d *cub3d, char *line, int i)
 	else if (i == 5 && ft_strncmp(line, "C ", 2) == 0)
 		return (parse_color(cub3d, line, &cub3d->map.ceiling_color, "C"));
 	return (0);
-} 
+}

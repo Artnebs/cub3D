@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 12:50:49 by jeanb            ###   ########.fr       */
+/*   Updated: 2025/07/29 12:56:12 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,9 @@ typedef struct s_draw_params
 
 typedef struct s_wall_draw_params
 {
-	int		x;
-	int		draw_start;
-	int		draw_end;
+	int			x;
+	int			draw_start;
+	int			draw_end;
 	t_wall_data	*wall;
 }	t_wall_draw_params;
 
@@ -137,20 +137,20 @@ typedef struct s_wall_x_params
 }	t_wall_x_params;
 
 typedef struct s_wall_render_params {
-	double perp_wall_dist;
-	int side;
-} t_wall_render_params;
+	double	perp_wall_dist;
+	int		side;
+}	t_wall_render_params;
 
 typedef struct s_raycast_data {
-	t_ray_params params;
-	t_draw_params draw_params;
-	t_wall_data wall;
-	t_dda_data dda;
-	double perp_wall_dist;
-	int side;
-	t_wall_render_params wr_params;
-	t_wall_draw_params wall_params;
-} t_raycast_data;
+	t_ray_params			params;
+	t_draw_params			draw_params;
+	t_wall_data				wall;
+	t_dda_data				dda;
+	double					perp_wall_dist;
+	int						side;
+	t_wall_render_params	wr_params;
+	t_wall_draw_params		wall_params;
+}	t_raycast_data;
 
 typedef struct s_cub3d
 {
@@ -173,7 +173,8 @@ int			parse_map(t_cub3d *cub3d, const char *filename);
 int			validate_map(t_cub3d *cub3d);
 
 // Parsing utilities
-int			parse_texture(t_cub3d *cub3d, char *line, char **texture, char *type);
+int			parse_texture(t_cub3d *cub3d, char *line,
+				char **texture, char *type);
 int			parse_color(t_cub3d *cub3d, char *line, int *color, char *type);
 int			parse_map_line(t_cub3d *cub3d, char *line);
 int			is_map_line(char *line);
@@ -197,7 +198,8 @@ int			render_frame(void *param);
 
 // Raycasting utilities
 void		perform_dda(t_cub3d *cub3d, t_dda_data *dda);
-void		init_ray_direction(t_cub3d *cub3d, double camera_x, double ray_dir[2]);
+void		init_ray_direction(t_cub3d *cub3d,
+				double camera_x, double ray_dir[2]);
 void		init_step_and_side_dist(t_cub3d *cub3d, t_ray_params *params);
 void		calculate_wall_distance(t_cub3d *cub3d, t_ray_params *params,
 				double *perp_wall_dist, int side);
@@ -213,13 +215,15 @@ int			handle_window_close(t_cub3d *cub3d);
 
 // Event utilities
 int			is_valid_position(t_cub3d *cub3d, double x, double y);
-void		calculate_movement(t_cub3d *cub3d, int keycode, double *new_x, double *new_y);
+void		calculate_movement(t_cub3d *cub3d, int keycode,
+				double *new_x, double *new_y);
 void		handle_movement(t_cub3d *cub3d, int keycode);
 void		handle_rotation(t_cub3d *cub3d, int keycode);
 
 // Raycasting
 void		cast_ray(t_cub3d *cub3d, int x);
-void		draw_floor_ceiling(t_cub3d *cub3d, int x, int draw_start, int draw_end);
+void		draw_floor_ceiling(t_cub3d *cub3d, int x,
+				int draw_start, int draw_end);
 
 // Utility functions
 void		strip_newline(char *str);

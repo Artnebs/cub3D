@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:10:50 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 12:39:34 by jeanb            ###   ########.fr       */
+/*   Updated: 2025/07/29 12:57:57 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-
 
 int	handle_keypress(int keycode, t_cub3d *cub3d)
 {

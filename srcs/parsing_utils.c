@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeanb <jeanb@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:15:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 12:39:34 by jeanb            ###   ########.fr       */
+/*   Updated: 2025/07/29 13:14:21 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-
 
 static char	**allocate_new_map(t_cub3d *cub3d)
 {
