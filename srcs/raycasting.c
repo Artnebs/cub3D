@@ -51,8 +51,7 @@ static void	put_pixel_to_image(t_cub3d *cub3d, t_wall_draw_params *params,
 		if (params->wall->side == 1)
 			color = (color >> 1) & 8355711;
 		*(int *)(cub3d->data.addr + (y * cub3d->data.line_length
-					x . + params->x
-					* (cub3d->data.bits_per_pixel / 8))) = color;
+				+ params->x * (cub3d->data.bits_per_pixel / 8))) = color;
 	}
 }
 
