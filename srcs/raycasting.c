@@ -42,6 +42,19 @@ void	draw_floor_ceiling(t_cub3d *cub3d, int x, int draw_start,
 	}
 }
 
+static void	put_pixel_to_image(t_cub3d *cub3d, t_wall_draw_params *params,
+		int y, int color)
+{
+	if (y >= 0 && y < WINDOW_HEIGHT && params->x >= 0
+		&& params->x < WINDOW_WIDTH)
+	{
+		if (params->wall->side == 1)
+			color = (color >> 1) & 8355711;
+		*(int *)(cub3d->data.addr + (y * cub3d->data.line_length
+			+ params->x * (cub3d->data.bits_per_pixel / 8))) = color;
+	}
+}
+
 void	draw_wall_texture(t_cub3d *cub3d, t_wall_draw_params *params)
 {
 	int		y;
@@ -58,17 +71,9 @@ void	draw_wall_texture(t_cub3d *cub3d, t_wall_draw_params *params)
 	{
 		tex_y = (int)tex_pos & (TEXTURE_HEIGHT - 1);
 		tex_pos += step;
-		if (y >= 0 && y < WINDOW_HEIGHT && \
-			params->x >= 0 && params->x < WINDOW_WIDTH)
-		{
-			color = get_texture_color(&cub3d->map.\
-				textures[params->wall->tex_num], params->wall->tex_x, tex_y);
-			if (params->wall->side == 1)
-				color = (color >> 1) & 8355711;
-			*(int *)(cub3d->data.addr + (y * \
-				cub3d->data.line_length + params->x * \
-				(cub3d->data.bits_per_pixel / 8))) = color;
-		}
+		color = get_texture_color(&cub3d->map.textures[params->wall->tex_num],
+				params->wall->tex_x, tex_y);
+		put_pixel_to_image(cub3d, params, y, color);
 		y++;
 	}
 }

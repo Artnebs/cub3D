@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation_utils.c                                 :+:      :+:    :+:   */
+/*   map_position_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 12:20:00 by jeanb             #+#    #+#             */
-/*   Updated: 2025/07/29 14:54:32 by jmader           ###   ########.fr       */
+/*   Created: 2025/07/29 17:30:00 by anebbou           #+#    #+#             */
+/*   Updated: 2025/07/29 18:46:28 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-int	is_valid_char(char c)
-{
-	return (c == '0' || c == '1' || c == 'N' || c == 'S'
-		|| c == 'E' || c == 'W' || c == ' ' || c == '\t');
-}
 
 int	get_char_at_pos(t_cub3d *cub3d, int row, int col)
 {
@@ -44,4 +38,15 @@ int	is_open_space_adjacent(t_cub3d *cub3d, int i, int j)
 	if (adjacent_chars[3] == ' ' || adjacent_chars[3] == '\t')
 		return (1);
 	return (0);
+}
+
+void	check_position(t_cub3d *cub3d, int i, int j, int len)
+{
+	if (cub3d->map.map[i][j] == '0' || cub3d->map.map[i][j] == 'N'
+		|| cub3d->map.map[i][j] == 'S' || cub3d->map.map[i][j] == 'E'
+		|| cub3d->map.map[i][j] == 'W')
+	{
+		check_borders(cub3d, i, j, len);
+		check_adjacent_spaces(cub3d, i, j, len);
+	}
 }

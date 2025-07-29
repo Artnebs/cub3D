@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_utils.c                                      :+:      :+:    :+:   */
+/*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 16:55:00 by anebbou           #+#    #+#             */
+/*   Created: 2025/07/29 12:20:00 by jeanb             #+#    #+#             */
 /*   Updated: 2025/07/29 18:45:24 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	parse_color_line(t_cub3d *cub3d, char *line, int i)
+void	init_map_data(t_cub3d *cub3d)
 {
-	if (i == 4 && ft_strncmp(line, "F ", 2) == 0)
-		return (parse_color(cub3d, line, &cub3d->map.floor_color, "F"));
-	else if (i == 5 && ft_strncmp(line, "C ", 2) == 0)
-		return (parse_color(cub3d, line, &cub3d->map.ceiling_color, "C"));
-	return (0);
+	cub3d->map.map = NULL;
+	cub3d->map.width = 0;
+	cub3d->map.height = 0;
+	cub3d->map.north_texture = NULL;
+	cub3d->map.south_texture = NULL;
+	cub3d->map.east_texture = NULL;
+	cub3d->map.west_texture = NULL;
+	cub3d->map.floor_color = -1;
+	cub3d->map.ceiling_color = -1;
 }

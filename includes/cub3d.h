@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 12:56:12 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/29 18:45:24 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ void		error_exit(t_cub3d *cub3d, const char *message);
 // Map parsing
 int			parse_map(t_cub3d *cub3d, const char *filename);
 int			validate_map(t_cub3d *cub3d);
+void		init_map_data(t_cub3d *cub3d);
 
 // Parsing utilities
 int			parse_texture(t_cub3d *cub3d, char *line,
@@ -180,8 +181,6 @@ int			parse_texture(t_cub3d *cub3d, char *line,
 int			parse_color(t_cub3d *cub3d, char *line, int *color, char *type);
 int			parse_map_line(t_cub3d *cub3d, char *line);
 int			is_map_line(char *line);
-int			parse_texture_line(t_cub3d *cub3d, char *line, int i);
-int			parse_color_line(t_cub3d *cub3d, char *line, int i);
 
 // Validation utilities
 int			is_valid_char(char c);
@@ -191,6 +190,7 @@ int			is_open_space_adjacent(t_cub3d *cub3d, int i, int j);
 int			check_borders(t_cub3d *cub3d, int i, int j, int len);
 int			check_adjacent_spaces(t_cub3d *cub3d, int i, int j, int len);
 void		check_position(t_cub3d *cub3d, int i, int j, int len);
+int			validate_colors(t_cub3d *cub3d);
 
 // Texture handling
 int			load_textures(t_cub3d *cub3d);

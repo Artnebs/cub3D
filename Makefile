@@ -31,10 +31,11 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/gc.c \
 			  $(SRC_DIR)/error.c \
 			  $(SRC_DIR)/map_parser.c \
+			  $(SRC_DIR)/map_init.c \
 			  $(SRC_DIR)/parsing_utils.c \
 			  $(SRC_DIR)/map_validation.c \
 			  $(SRC_DIR)/map_validation_utils.c \
-			  $(SRC_DIR)/validation_utils.c \
+			  $(SRC_DIR)/map_position_utils.c \
 			  $(SRC_DIR)/utils.c \
 			  $(SRC_DIR)/textures.c \
 			  $(SRC_DIR)/raycasting.c \
