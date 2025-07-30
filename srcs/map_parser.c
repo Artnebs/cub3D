@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:09:10 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 20:12:11 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/30 12:58:34 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 static int	parse_texture_line(t_cub3d *cub3d, char *line, int i)
 {
-	if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	if (line[i] && line[i + 1] && line[i + 2] && 
+		line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i,
 				&cub3d->map.north_texture, "NO"));
-	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	else if (line[i] && line[i + 1] && line[i + 2] && 
+		line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i,
 				&cub3d->map.south_texture, "SO"));
-	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
+	else if (line[i] && line[i + 1] && line[i + 2] && 
+		line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i, &cub3d->map.west_texture, "WE"));
-	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
+	else if (line[i] && line[i + 1] && line[i + 2] && 
+		line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
 		return (parse_texture(cub3d, line + i, &cub3d->map.east_texture, "EA"));
 	return (0);
 }
 
 static int	parse_color_line(t_cub3d *cub3d, char *line, int i)
 {
-	if (line[i] == 'F' && line[i + 1] == ' ')
+	if (line[i] && line[i + 1] && line[i] == 'F' && line[i + 1] == ' ')
 		return (parse_color(cub3d, line + i, &cub3d->map.floor_color, "F"));
-	else if (line[i] == 'C' && line[i + 1] == ' ')
+	else if (line[i] && line[i + 1] && line[i] == 'C' && line[i + 1] == ' ')
 		return (parse_color(cub3d, line + i, &cub3d->map.ceiling_color, "C"));
 	return (0);
 }

@@ -42,6 +42,22 @@ static int	check_color_duplicate(int *color, char **split, t_cub3d *cub3d)
 	return (1);
 }
 
+static int	validate_rgb_count(char **rgb, t_cub3d *cub3d)
+{
+	int	count;
+
+	count = 0;
+	while (rgb[count])
+		count++;
+	if (count != 3)
+	{
+		ft_free_split(rgb);
+		error_exit(cub3d, "RGB format must have exactly 3 values");
+		return (0);
+	}
+	return (1);
+}
+
 static int	validate_rgb_values(int r_g_b[3], char **rgb, t_cub3d *cub3d)
 {
 	int	i;
@@ -81,6 +97,11 @@ static int	parse_color_split_and_rgb(t_cub3d *cub3d, char *line,
 		ft_free_split(*split);
 		error_exit(cub3d, "Memory allocation failed while parsing RGB values");
 	}
+	if (!validate_rgb_count(*rgb, cub3d))
+	{
+		ft_free_split(*split);
+		return (0);
+	}
 	return (1);
 }
 
@@ -95,7 +116,7 @@ int	parse_color(t_cub3d *cub3d, char *line, int *color, char *type)
 		return (0);
 	if (!check_color_duplicate(color, split, cub3d))
 		return (0);
-	if (!validate_rgb_values(r_g_b, rgb, cub3d))
+	if (!validate_rgb_count(rgb, cub3d) || !validate_rgb_values(r_g_b, rgb, cub3d))
 	{
 		ft_free_split(split);
 		return (0);

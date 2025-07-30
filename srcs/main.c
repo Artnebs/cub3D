@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:07:30 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/28 18:41:26 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 12:21:52 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	init_cub3d(t_cub3d *cub3d)
+static void init_cub3d(t_cub3d *cub3d)
 {
 	cub3d->data.mlx = NULL;
 	cub3d->data.win = NULL;
@@ -36,9 +36,9 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->garbage = NULL;
 }
 
-static int	validate_arguments(int argc, char **argv)
+static int validate_arguments(int argc, char **argv)
 {
-	int	fd;
+	int fd;
 
 	if (argc != 2)
 	{
@@ -60,29 +60,29 @@ static int	validate_arguments(int argc, char **argv)
 	return (1);
 }
 
-static void	setup_mlx(t_cub3d *cub3d)
+static void setup_mlx(t_cub3d *cub3d)
 {
 	cub3d->data.mlx = mlx_init();
 	if (!cub3d->data.mlx)
 		error_exit(cub3d, "Failed to initialize MLX");
 	cub3d->data.win = mlx_new_window(cub3d->data.mlx, WINDOW_WIDTH,
-			WINDOW_HEIGHT, "cub3D");
+									 WINDOW_HEIGHT, "cub3D");
 	if (!cub3d->data.win)
 		error_exit(cub3d, "Failed to create window");
 	cub3d->data.img = mlx_new_image(cub3d->data.mlx, WINDOW_WIDTH,
-			WINDOW_HEIGHT);
+									WINDOW_HEIGHT);
 	if (!cub3d->data.img)
 		error_exit(cub3d, "Failed to create image");
 	cub3d->data.addr = mlx_get_data_addr(cub3d->data.img,
-			&cub3d->data.bits_per_pixel, &cub3d->data.line_length,
-			&cub3d->data.endian);
+										 &cub3d->data.bits_per_pixel, &cub3d->data.line_length,
+										 &cub3d->data.endian);
 	if (!cub3d->data.addr)
 		error_exit(cub3d, "Failed to get image data address");
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_cub3d	cub3d;
+	t_cub3d cub3d;
 
 	if (!validate_arguments(argc, argv))
 		return (1);
