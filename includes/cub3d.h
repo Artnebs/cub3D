@@ -6,7 +6,7 @@
 /*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 12:04:48 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 14:35:51 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ typedef struct s_cub3d
 }	t_cub3d;
 
 // Garbage collector functions
+char		**ft_gc_split(t_cub3d *cub3d, char const *s, char c);
+char		*gc_get_next_line(t_cub3d *cub3d, int fd);
 void		*gc_malloc(t_cub3d *cub3d, size_t size);
 void		gc_free(t_cub3d *cub3d, void *ptr);
 void		gc_cleanup(t_cub3d *cub3d);

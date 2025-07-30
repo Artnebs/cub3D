@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:09:10 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 20:12:11 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:35:51 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,16 @@ static void	process_map_lines(t_cub3d *cub3d, int fd)
 {
 	char	*line;
 
-	line = get_next_line(fd);
+	line = gc_get_next_line(cub3d, fd);
 	while (line != NULL)
 	{
 		strip_newline(line);
 		if (!parse_line(cub3d, line))
 		{
-			free(line);
 			close(fd);
 			error_exit(cub3d, "Failed to parse line in map file");
 		}
-		free(line);
-		line = get_next_line(fd);
+		line = gc_get_next_line(cub3d, fd);
 	}
 }
 

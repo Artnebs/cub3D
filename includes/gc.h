@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:54:21 by anebbou           #+#    #+#             */
-/*   Updated: 2025/05/14 18:54:26 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:17:51 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ typedef struct s_gc
 void	*gc_malloc(t_gc *gc, size_t size);
 void	gc_free_all(t_gc *gc);
 char	*gc_strdup(t_gc *gc, const char *s);
-char	**gc_split(t_gc *gc, const char *s, char c);
 
 #endif

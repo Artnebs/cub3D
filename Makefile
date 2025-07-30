@@ -29,6 +29,9 @@ LDFLAGS		= -L$(LIBFT_DIR) -lft -lreadline -L$(MLX_DIR) -lmlx -L/usr/lib -Imlx -l
 # Sources
 SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/gc.c \
+			  $(SRC_DIR)/ft_gc_split.c \
+			  $(SRC_DIR)/gc_get_next_line/gc_get_next_line.c \
+			  $(SRC_DIR)/gc_get_next_line/gc_get_next_line_utils.c \
 			  $(SRC_DIR)/error.c \
 			  $(SRC_DIR)/map_parser.c \
 			  $(SRC_DIR)/map_init.c \

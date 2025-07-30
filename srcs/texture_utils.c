@@ -6,7 +6,7 @@
 /*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 12:00:00 by jmader            #+#    #+#             */
-/*   Updated: 2025/07/30 12:04:48 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 14:24:43 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	validate_texture_args(char **split, t_cub3d *cub3d)
 		i++;
 	if (i != 2)
 	{
-		ft_free_split(split);
 		if (i < 2)
 			error_exit(cub3d, "Missing texture path");
 		else
@@ -33,9 +32,9 @@ int	validate_texture_args(char **split, t_cub3d *cub3d)
 
 int	check_texture_duplicate(char **texture, char **split, t_cub3d *cub3d)
 {
+	(void)split;
 	if (*texture != NULL)
 	{
-		ft_free_split(split);
 		error_exit(cub3d, "Texture is defined multiple times");
 		return (0);
 	}
