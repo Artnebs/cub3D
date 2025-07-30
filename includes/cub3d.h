@@ -31,6 +31,9 @@
 # define MOVE_SPEED 0.1
 # define TEXTURE_WIDTH 64
 # define TEXTURE_HEIGHT 64
+# define MAX_MAP_SIZE 100
+# define MAX_LINE_LENGTH 1000
+# define MAX_PATH_LENGTH 256
 
 typedef struct s_texture
 {
@@ -162,6 +165,34 @@ typedef struct s_cub3d
 	t_garbage	*garbage;
 }	t_cub3d;
 
+typedef struct s_static_parser
+{
+	char	lines[MAX_MAP_SIZE][MAX_LINE_LENGTH];
+	char	north_path[MAX_PATH_LENGTH];
+	char	south_path[MAX_PATH_LENGTH];
+	char	east_path[MAX_PATH_LENGTH];
+	char	west_path[MAX_PATH_LENGTH];
+	int		floor_r;
+	int		floor_g;
+	int		floor_b;
+	int		ceiling_r;
+	int		ceiling_g;
+	int		ceiling_b;
+	int		line_count;
+	int		has_north;
+	int		has_south;
+	int		has_east;
+	int		has_west;
+	int		has_floor;
+	int		has_ceiling;
+	int		player_x;
+	int		player_y;
+	char	player_dir;
+	int		map_start_line;
+	int		map_width;
+	int		map_height;
+}	t_static_parser;
+
 // Garbage collector functions
 void		*gc_malloc(t_cub3d *cub3d, size_t size);
 void		gc_free(t_cub3d *cub3d, void *ptr);
@@ -172,6 +203,7 @@ void		error_exit(t_cub3d *cub3d, const char *message);
 
 // Map parsing
 int			parse_map(t_cub3d *cub3d, const char *filename);
+int			static_parse_map(t_cub3d *cub3d, const char *filename);
 int			validate_map(t_cub3d *cub3d);
 void		init_map_data(t_cub3d *cub3d);
 

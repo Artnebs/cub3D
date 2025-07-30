@@ -31,6 +31,7 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/gc.c \
 			  $(SRC_DIR)/error.c \
 			  $(SRC_DIR)/map_parser.c \
+			  $(SRC_DIR)/static_parser.c \
 			  $(SRC_DIR)/map_init.c \
 			  $(SRC_DIR)/parsing_utils.c \
 			  $(SRC_DIR)/map_validation.c \

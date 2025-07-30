@@ -87,7 +87,8 @@ int main(int argc, char **argv)
 	if (!validate_arguments(argc, argv))
 		return (1);
 	init_cub3d(&cub3d);
-	parse_map(&cub3d, argv[1]);
+	if (!static_parse_map(&cub3d, argv[1]))
+		return (1);
 	validate_map(&cub3d);
 	setup_mlx(&cub3d);
 	if (!load_textures(&cub3d))
