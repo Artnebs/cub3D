@@ -45,8 +45,9 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/events.c \
 			  $(SRC_DIR)/events_utils.c \
 			  $(SRC_DIR)/player_direction.c \
-			  $(SRC_DIR)/texture_parsing.c \
-			  $(SRC_DIR)/color_parsing.c \
+		  $(SRC_DIR)/texture_parsing.c \
+		  $(SRC_DIR)/texture_utils.c \
+		  $(SRC_DIR)/color_parsing.c \
 			  $(SRC_DIR)/color_utils.c \
 			  $(SRC_DIR)/movement.c \
 			  $(SRC_DIR)/rotation.c

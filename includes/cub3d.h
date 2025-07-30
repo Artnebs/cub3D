@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
+/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/29 20:12:11 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/30 12:04:48 by jmader           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,12 @@ int			parse_texture(t_cub3d *cub3d, char *line,
 int			parse_color(t_cub3d *cub3d, char *line, int *color, char *type);
 int			parse_map_line(t_cub3d *cub3d, char *line);
 int			is_map_line(char *line);
+
+// Texture validation utilities
+int			validate_texture_args(char **split, t_cub3d *cub3d);
+int			check_texture_duplicate(char **texture, char **split,
+				t_cub3d *cub3d);
+int			validate_texture_file(char *path, t_cub3d *cub3d);
 
 // Validation utilities
 int			is_valid_char(char c);
