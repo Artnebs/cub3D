@@ -20,8 +20,8 @@
 # include <mlx.h>
 # include <errno.h>
 # include "../Libft_GNL_Printf/includes/libft.h"
-# include "../Libft_GNL_Printf/includes/get_next_line.h"
 # include "../Libft_GNL_Printf/includes/ft_printf.h"
+# include "../srcs/gc_get_next_line/gc_get_next_line.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720

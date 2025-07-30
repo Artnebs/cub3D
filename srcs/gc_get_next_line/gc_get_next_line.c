@@ -39,6 +39,7 @@ char	*gc_read_to_buffer(t_cub3d *cub3d, int fd, t_gc_fd_buffer *current_fd, t_gc
 {
 	char	*temp_buffer;
 	ssize_t	bytes_read;
+	size_t	total_size = 0;
 
 	temp_buffer = gc_malloc(cub3d, BUFFER_SIZE + 1);
 	if (!temp_buffer)
@@ -47,6 +48,13 @@ char	*gc_read_to_buffer(t_cub3d *cub3d, int fd, t_gc_fd_buffer *current_fd, t_gc
 	while (bytes_read > 0)
 	{
 		temp_buffer[bytes_read] = '\0';
+		total_size += bytes_read;
+		// Prevent excessive memory usage for very large files
+		if (total_size > 1024 * 1024) // 1MB limit
+		{
+			gc_gnl_remove_fd(fd_list, fd);
+			return (NULL);
+		}
 		current_fd->buffer = gc_gnl_strjoin_and_free(cub3d, current_fd->buffer,
 				temp_buffer);
 		if (!current_fd->buffer)
