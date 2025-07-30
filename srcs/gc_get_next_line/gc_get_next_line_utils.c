@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   gc_get_next_line_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:03:02 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 14:35:51 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 16:19:51 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gc_get_next_line.h"
 #include "../../includes/cub3d.h"
 
-t_gc_fd_buffer	*gc_gnl_find_or_add_fd(t_cub3d *cub3d, int fd, t_gc_fd_buffer **head)
+t_gc_fd_buffer	*gc_gnl_find_or_add_fd(t_cub3d *cub3d, int fd,
+		t_gc_fd_buffer **head)
 {
 	t_gc_fd_buffer	*current;
 	t_gc_fd_buffer	*new_node;
@@ -52,7 +53,6 @@ void	gc_gnl_remove_fd(t_gc_fd_buffer **head, int fd)
 				prev->next = current->next;
 			else
 				*head = current->next;
-			// Note: We don't free here as it's managed by the garbage collector
 			return ;
 		}
 		prev = current;

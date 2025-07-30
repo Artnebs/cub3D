@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_gc_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 13:27:32 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 14:19:10 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 16:12:49 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static int	count_words(const char *s, char c)
 	return (count);
 }
 
-static char	*gc_substr(t_cub3d *cub3d, const char *s, unsigned int start, size_t len)
+static char	*gc_substr(t_cub3d *cub3d, const char *s,
+	unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gc_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:02:59 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 14:35:51 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 16:18:55 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*gc_get_next_line(t_cub3d *cub3d, int fd)
 {
 	static t_gc_fd_buffer	*fd_list = NULL;
 	t_gc_fd_buffer			*current_fd;
-	char				*line;
+	char					*line;
 
 	if (!cub3d || fd < 0)
 		return (NULL);
@@ -35,7 +35,8 @@ char	*gc_get_next_line(t_cub3d *cub3d, int fd)
 	return (line);
 }
 
-char	*gc_read_to_buffer(t_cub3d *cub3d, int fd, t_gc_fd_buffer *current_fd, t_gc_fd_buffer **fd_list)
+char	*gc_read_to_buffer(t_cub3d *cub3d, int fd, t_gc_fd_buffer *current_fd,
+		t_gc_fd_buffer **fd_list)
 {
 	char	*temp_buffer;
 	ssize_t	bytes_read;
@@ -50,10 +51,7 @@ char	*gc_read_to_buffer(t_cub3d *cub3d, int fd, t_gc_fd_buffer *current_fd, t_gc
 		current_fd->buffer = gc_gnl_strjoin_and_free(cub3d, current_fd->buffer,
 				temp_buffer);
 		if (!current_fd->buffer)
-		{
-			gc_gnl_remove_fd(fd_list, fd);
-			return (NULL);
-		}
+			return (gc_gnl_remove_fd(fd_list, fd), NULL);
 		if (gc_gnl_find_newline(current_fd->buffer) >= 0)
 			break ;
 		bytes_read = read(fd, temp_buffer, BUFFER_SIZE);
