@@ -44,15 +44,19 @@ static int	check_color_duplicate(int *color, char **split, t_cub3d *cub3d)
 static int	validate_rgb_values(int r_g_b[3], char **rgb, t_cub3d *cub3d)
 {
 	int	i;
+	int	count;
 
+	count = 0;
+	while (rgb[count])
+		count++;
+	if (count != 3)
+		return (error_exit(cub3d,
+				"RGB format must contain exactly 3 values"), 0);
 	i = 0;
 	while (i < 3)
 	{
 		if (!rgb[i] || ft_strlen(rgb[i]) == 0)
-		{
-			error_exit(cub3d, "Invalid RGB format");
-			return (0);
-		}
+			return (error_exit(cub3d, "Invalid RGB format"), 0);
 		r_g_b[i] = ft_atoi(rgb[i]);
 		if (r_g_b[i] < 0 || r_g_b[i] > 255)
 		{

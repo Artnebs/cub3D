@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 18:39:29 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 14:35:51 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 16:46:02 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <mlx.h>
 # include <errno.h>
 # include "../Libft_GNL_Printf/includes/libft.h"
-# include "../Libft_GNL_Printf/includes/get_next_line.h"
 # include "../Libft_GNL_Printf/includes/ft_printf.h"
+# include "../srcs/gc_get_next_line/gc_get_next_line.h"
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720

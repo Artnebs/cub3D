@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmader <jmader@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:09:10 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 14:35:51 by jmader           ###   ########.fr       */
+/*   Updated: 2025/07/30 16:47:08 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 static int	parse_texture_line(t_cub3d *cub3d, char *line, int i)
 {
-	if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	if (ft_strncmp(line + i, "NO ", 3) == 0)
 		return (parse_texture(cub3d, line + i,
 				&cub3d->map.north_texture, "NO"));
-	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
+	else if (ft_strncmp(line + i, "SO ", 3) == 0)
 		return (parse_texture(cub3d, line + i,
 				&cub3d->map.south_texture, "SO"));
-	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
+	else if (ft_strncmp(line + i, "WE ", 3) == 0)
 		return (parse_texture(cub3d, line + i, &cub3d->map.west_texture, "WE"));
-	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
+	else if (ft_strncmp(line + i, "EA ", 3) == 0)
 		return (parse_texture(cub3d, line + i, &cub3d->map.east_texture, "EA"));
 	return (0);
 }
 
 static int	parse_color_line(t_cub3d *cub3d, char *line, int i)
 {
-	if (line[i] == 'F' && line[i + 1] == ' ')
+	if (ft_strncmp(line + i, "F ", 2) == 0)
 		return (parse_color(cub3d, line + i, &cub3d->map.floor_color, "F"));
-	else if (line[i] == 'C' && line[i + 1] == ' ')
+	else if (ft_strncmp(line + i, "C ", 2) == 0)
 		return (parse_color(cub3d, line + i, &cub3d->map.ceiling_color, "C"));
 	return (0);
 }
@@ -51,8 +51,11 @@ static int	parse_line(t_cub3d *cub3d, char *line)
 		return (1);
 	if (is_map_line(line))
 		return (parse_map_line(cub3d, line));
-	error_exit(cub3d,
-		"Invalid line in map file: unknown identifier or character");
+	if (ft_strchr(line, '1') || ft_strchr(line, '0') || ft_strchr(line, 'N')
+		|| ft_strchr(line, 'S') || ft_strchr(line, 'E') || ft_strchr(line, 'W'))
+		error_exit(cub3d, "Invalid character in map");
+	else
+		error_exit(cub3d, "Invalid line in map file: unknown identifier");
 	return (0);
 }
 
