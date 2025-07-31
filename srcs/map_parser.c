@@ -6,7 +6,7 @@
 /*   By: anebbou <anebbou@student42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 17:09:10 by anebbou           #+#    #+#             */
-/*   Updated: 2025/07/30 16:47:08 by anebbou          ###   ########.fr       */
+/*   Updated: 2025/07/31 12:45:53 by anebbou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	parse_line(t_cub3d *cub3d, char *line)
 		return (parse_map_line(cub3d, line));
 	if (ft_strchr(line, '1') || ft_strchr(line, '0') || ft_strchr(line, 'N')
 		|| ft_strchr(line, 'S') || ft_strchr(line, 'E') || ft_strchr(line, 'W'))
-		error_exit(cub3d, "Invalid character in map");
+		error_exit(cub3d, "Invalid character was used for texture or map");
 	else
 		error_exit(cub3d, "Invalid line in map file: unknown identifier");
 	return (0);
@@ -62,11 +62,20 @@ static int	parse_line(t_cub3d *cub3d, char *line)
 static void	process_map_lines(t_cub3d *cub3d, int fd)
 {
 	char	*line;
+	int		map_started;
 
+	map_started = 0;
 	line = gc_get_next_line(cub3d, fd);
 	while (line != NULL)
 	{
 		strip_newline(line);
+		if (!map_started && is_map_line(line) && line[0] != '\0')
+			map_started = 1;
+		if (map_started && !is_map_line(line) && line[0] != '\0')
+		{
+			close(fd);
+			error_exit(cub3d, "Invalid map placement");
+		}
 		if (!parse_line(cub3d, line))
 		{
 			close(fd);
